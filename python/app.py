@@ -32,6 +32,14 @@ def getAllAttraction():
     result = attraction.get_all_attraction()
     return result, 200
 
+@app.post('/attraction/<int:index>/critique')
+def addCritique(index):
+    json = request.get_json()
+    retour = attraction.add_critique(index, json)
+    if (retour):
+        return jsonify({"message": "Element ajouté.", "result": retour}), 200
+    return jsonify({"message": "Erreur lors de l'ajout.", "result": retour}), 500
+
 @app.get('/attractionvisible')
 def getAllAttractionVisible():
     result = attraction.get_all_attraction_visible()

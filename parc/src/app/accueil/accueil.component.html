@@ -2,12 +2,41 @@
   <mat-card-header>
     <mat-card-title>Bienvenue sur le site internet du parc d'attraction</mat-card-title>
   </mat-card-header>
+  <div>
+    <div>
+      <form #critiqueForm>
+        <div>
+          <select name="attraction" id="attraction" [(ngModel)] = "attractionid">
+            <option *ngFor="let attraction of attractions | async;" [value]="attraction.attraction_id">{{attraction.nom}}</option>
+          </select>
+        </div>
+        <div>
+          <input type="text" name="nom" placeholder="Nom"  [(ngModel)] = "nom">
+        </div>
+        <div>
+          <input type="text" name="prenom" placeholder="Prénom"  [(ngModel)] = "prenom">
+        </div>
+        <div>
+          <textarea name="texte" placeholder="Votre critique" [(ngModel)] = "critique"></textarea>
+        </div>
+        <div>
+          <input type="number" name="note" placeholder="Note (sur 5)" [(ngModel)] = "note">
+        </div>
+        <!-- Utilisation d'un bouton avec un événement de clic -->
+        <button type="button" (click)="submitCritique(attractionid, nom, prenom, critique, note)">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  
   <mat-card-content>
     <div class="attraction-title">
+      
       <div class="attraction">
         <span>Nom de l'attraction</span>
         <span>Description de l'attraction</span>
         <span>Difficulté de l'attraction / 5</span>
+        <span>Critique</span>
+        
       </div>
     </div>
     <ng-container *ngFor="let attraction of attractions | async;">
@@ -15,6 +44,7 @@
         <span>{{attraction.nom}}</span>
         <span>{{attraction.description}}</span>
         <span>{{attraction.difficulte}} / 5</span>
+       
       </div>
     </ng-container>
   </mat-card-content>

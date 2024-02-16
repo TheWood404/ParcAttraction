@@ -29,6 +29,27 @@ def get_all_attraction():
     
     return json
 
+def add_critique(id, data):
+    if (not id):
+        return False
+
+    if (not "note" in data or data["note"] is None):
+        return False
+
+    if (not "critique" in data or data["critique"] == ""):
+        return False
+
+    if (not "nom" in data or data["nom"] == ""):
+        return False
+  
+    if (not "prenom" in data or data["prenom"] == ""):
+        return False
+    
+    requete = "INSERT INTO critique (attraction_id, note, critique, nom, prenom) VALUES (?, ?, ?, ?, ?);"
+    id = req.insert_in_db(requete, (id, data["note"], data["critique"], data["nom"], data["prenom"]))
+
+    return id
+
 def get_all_attraction_visible():
     json = req.select_from_db("SELECT * FROM attraction WHERE visible = 1")
     
