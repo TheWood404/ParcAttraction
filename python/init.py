@@ -4,10 +4,10 @@ import re
 
 try:
     conn = mariadb.connect(
-        user="mysqlusr",
-        password="mysqlpwd",
-        host="database",
-        port=3306,
+        user="root",
+        password="",
+        host="127.0.0.1",
+        port=33066,
         database="parc"
     )
     cur = conn.cursor()
