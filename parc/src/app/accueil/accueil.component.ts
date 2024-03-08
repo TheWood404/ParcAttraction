@@ -3,6 +3,7 @@ import { AttractionService } from '../Service/attraction.service';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { AttractionInterface } from '../Interface/attraction.interface';
+import { CritiqueInterface } from '../Interface/critique.interface';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 
