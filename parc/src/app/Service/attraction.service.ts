@@ -39,7 +39,7 @@ export class AttractionService {
   }
 
   public AddCritique(critique: CritiqueInterface) : Observable<CritiqueInterface> {
-    const url = "http://127.0.0.1/5000/critique";
+    const url = "http://127.0.0.1:5000/critique";
     const data = this.dataService.postData(url, critique);
     return data as Observable<CritiqueInterface>; 
   }
